@@ -1,116 +1,88 @@
 <?php
 
-$emptyArr = array();
-
-function xArray($array, $count) {
-    for ($i=1; $i<=$count; $i++) {
-        $array[] = str_repeat("x", $i);
+function TrueOrFalse($x1, $x2) {
+    if (($x1 + $x2) > 10) {
+        return true;
     }
-
-    foreach ($array as $value) {
-        echo "\n";
-        echo $value;
+    else {
+        return false;
     }
 }
 
-echo xArray($emptyArr, 4);
+echo TrueOrFalse(10, 2);
 
 echo "<br>";
 echo "\n";
 
-$emptyArr2 = array();
-
-function arrayFill($elem, $count) {
-    for ($i=0; $i<$count; $i++) {
-        $emptyArr2[] = $elem;
+function EqualOrNot($x1, $x2) {
+    if ($x1 == $x2) {
+        return true;
     }
-
-    foreach ($emptyArr2 as $value) {
-        echo "\n";
-        echo $value;
+    else {
+        return false;
     }
 }
 
-echo arrayFill('x', 5);
+echo EqualOrNot(10, 10);
 
 echo "<br>";
 echo "\n";
 
-$n2dArr = array(
-    array(1, 2, 3),
-    array(4, 5),
-    array(6)
-);
+$test = 0;
 
-function c2dArr($n2dArr)
-{
+if (!$test) echo "верно";
+
+echo "<br>";
+echo "\n";
+
+
+function age() {
+    $age = rand(-250,250);
     $sum = 0;
-    foreach ($n2dArr as $array) {
-        foreach ($array as $elem) {
+    if (($age < 10) or ($age > 99)) {
+        echo "Переменная age больше 99 или меньше 10";
+    }
+    else {
+        while ($age > 0) {
+            $digit = $age % 10;
+            $sum += $digit;
+            $age = (int)($age / 10);
+        }
+        echo "Сумма в диапазоне от 10 до 99";
+    }
+
+    echo "<br>";
+    echo "\n";
+
+    if ($sum <= 9) {
+        echo "Сумма цифр однозначна";
+    }
+    else echo "Сумма цифр двузначна";
+}
+
+echo age();
+
+echo "<br>";
+echo "\n";
+
+
+function randArr() {
+    $randNum = rand(1,10);
+    $randArr = array();
+    for ($i=0; $i<$randNum;$i++) {
+        $randArr[] = rand(0,20);
+    }
+    $sum = 0;
+    if (count($randArr) == 3) {
+        foreach ($randArr as $elem) {
             $sum += $elem;
         }
     }
-    return $sum;
-}
 
-echo c2dArr($n2dArr);
-
-echo "<br>";
-echo "\n";
-
-$count = 1;
-$array2d = array();
-for ($i = 0; $i < 3; $i++) {
-    for ($j = &$count; $j < 10; $j++) {
-        $array2d[$i][] = $j;
+    if ($sum != 0) {
+        return $sum;
     }
+    else return "Массив не состоит из 3-х элементов";
 }
 
-foreach ($array2d as $array) {
-    foreach ($array as $elem) {
-        echo $elem . ' ';
-    }
-}
-
-echo "<br>";
-echo "\n";
-
-$arrayN = array(2, 5, 3, 9);
-
-$firstNumber = $arrayN[0] * $arrayN[1];
-$secondNumber = $arrayN[2] * $arrayN[3];
-$result = $firstNumber + $secondNumber;
-echo $result;
-
-echo "<br>";
-echo "\n";
-
-$user = array(
-    'name' => 'Vadim',
-    'surname' => 'Drobovoy',
-    'patronymic' => 'Vladimirovich'
-);
-echo $user['surname'] . ' ' . $user['name'] . ' ' . $user['patronymic'];
-
-echo "<br>";
-echo "\n";
-
-$date = array('year' => 2024, 'month' => 3, 'day' => 3);
-$str = '';
-foreach ($date as $value) {
-    $str .= $value . '-';
-}
-$str = substr($str, 0, -1);
-echo $str;
-
-echo "<br>";
-echo "\n";
-
-$arr = ['a', 'b', 'c', 'd', 'e'];
-$count = 0;
-foreach ($arr as $elem) {
-    $count++;
-}
-echo $count;
-echo $arr[$count - 1];
-echo $arr[$count - 2];
+echo randArr();
